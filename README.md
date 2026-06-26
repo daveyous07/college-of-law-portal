@@ -102,12 +102,21 @@ npm run deploy
 
 ### 3. Deploy frontend
 
-Set `NEXT_PUBLIC_API_URL` to your Worker URL, then deploy to Cloudflare Pages:
+In **Cloudflare Pages** → your project → **Settings** → **Build**:
+
+| Setting | Value |
+|---------|--------|
+| Root directory | *(repo root)* |
+| Build command | `npm run build` |
+| Framework preset | **Next.js** |
+
+Set environment variable `NEXT_PUBLIC_API_URL` to your Worker URL (e.g. `https://col-law-api.<account>.workers.dev`).
+
+The root `npm run build` only builds the **web** workspace. The API (`apps/api`) and shared DB package deploy separately — they do not need a Pages build step.
 
 ```bash
 cd apps/web
 npm run build
-# Connect repo to Cloudflare Pages or use: npx wrangler pages deploy .next
 ```
 
 ### 4. Configure CORS

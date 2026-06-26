@@ -6,7 +6,9 @@
     "dev": "npm run dev --workspace=apps/web & npm run dev --workspace=apps/api",
     "dev:web": "npm run dev --workspace=apps/web",
     "dev:api": "npm run dev --workspace=apps/api",
-    "build": "npm run build --workspaces",
+    "build": "npm run build --workspace=col-law-web",
+    "build:web": "npm run build --workspace=col-law-web",
+    "build:all": "npm run build --workspaces --if-present",
     "db:generate": "npm run generate --workspace=packages/db",
     "db:migrate": "npm run migrate --workspace=packages/db"
   }

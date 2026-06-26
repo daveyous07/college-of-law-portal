@@ -1,0 +1,6 @@
+# Cloudflare Pages (frontend only — API deploys separately via apps/api wrangler)
+
+build:
+  command: npm run build
+  # Next.js on Cloudflare Pages: use the framework preset "Next.js" in the dashboard
+  # so output directory is detected automatically (.vercel/output or adapter output).
