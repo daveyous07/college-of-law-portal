@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-csu-maroon: #7a1234;
+  --color-csu-maroon-dark: #5c0d27;
+  --color-csu-gold: #f4b41a;
+  --color-csu-gold-light: #ffd54f;
+  --color-csu-aqua: #0088a8;
+  --color-csu-aqua-dark: #006680;
+  --color-csu-cream: #f7f7f5;
+  --color-csu-slate: #4a4a4a;
+
+  --color-law-navy: #7a1234;
+  --color-law-gold: #f4b41a;
+  --color-law-cream: #f7f7f5;
+  --color-law-slate: #4a4a4a;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--color-csu-cream);
+  color: #1f2937;
+}
+
+.csu-section-title {
+  @apply text-2xl font-bold text-csu-maroon border-l-4 border-csu-gold pl-3;
+}
+
+.csu-card {
+  @apply rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow;
+}
+
+.csu-btn-primary {
+  @apply inline-flex items-center justify-center rounded bg-csu-maroon px-4 py-2 text-sm font-medium text-white hover:bg-csu-maroon-dark transition-colors;
+}
+
+.csu-btn-accent {
+  @apply inline-flex items-center justify-center rounded bg-csu-gold px-4 py-2 text-sm font-semibold text-csu-maroon-dark hover:bg-csu-gold-light transition-colors;
+}
+
+.csu-link {
+  @apply text-csu-aqua hover:text-csu-aqua-dark hover:underline font-medium;
+}
