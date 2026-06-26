@@ -32,7 +32,7 @@
           "binding": "DB",
           "database_name": "col-law-db",
           // Paste your D1 Database ID from Cloudflare Dashboard → D1 → col-law-db
-          "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID",
+          "database_id": "9f70b977-ddef-49a2-a2d2-c2cd6bbab30f",
           "migrations_dir": "../../packages/db/migrations"
         }
       ],
