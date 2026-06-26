@@ -25,7 +25,7 @@ export function CsuLogo({ size = "md", className, priority }: CsuLogoProps) {
         alt="Cotabato State University"
         width={img}
         height={img}
-        quality={95}
+        unoptimized
         priority={priority}
         className="h-full w-full object-cover object-center"
       />

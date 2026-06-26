@@ -1,9 +1,16 @@
-import { writeFileSync, mkdirSync, statSync } from "fs";
+import { writeFileSync, mkdirSync, statSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), "..", "public");
 mkdirSync(dir, { recursive: true });
+
+// Seal is committed for reliable Cloudflare deploys; skip network fetch when present.
+if (existsSync(join(dir, "csu-seal.png"))) {
+  const seal = statSync(join(dir, "csu-seal.png"));
+  console.log(`csu-seal.png: ${seal.size} bytes (committed asset, skipping fetch)`);
+  process.exit(0);
+}
 
 const assets = [
   {
