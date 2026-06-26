@@ -46,12 +46,14 @@ export function authMiddleware(requiredRoles?: string[]) {
   };
 }
 
-export function setAuthCookie(token: string) {
-  return `col_auth=${token}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=604800`;
+export function setAuthCookie(token: string, corsOrigin?: string) {
+  const sameSite = corsOrigin && !corsOrigin.includes("localhost") ? "None" : "Strict";
+  return `col_auth=${token}; HttpOnly; Secure; SameSite=${sameSite}; Path=/; Max-Age=604800`;
 }
 
-export function clearAuthCookie() {
-  return `col_auth=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0`;
+export function clearAuthCookie(corsOrigin?: string) {
+  const sameSite = corsOrigin && !corsOrigin.includes("localhost") ? "None" : "Strict";
+  return `col_auth=; HttpOnly; Secure; SameSite=${sameSite}; Path=/; Max-Age=0`;
 }
 
 export { COOKIE };

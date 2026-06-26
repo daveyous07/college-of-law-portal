@@ -91,7 +91,27 @@ npx wrangler r2 bucket create col-law-media
 
 Update `apps/api/wrangler.jsonc` with your D1 `database_id`.
 
-### 2. Deploy API
+### 2. Deploy API (GitHub Actions — no local Wrangler login)
+
+One-time setup in **Cloudflare Dashboard** (browser only):
+
+1. **D1** → Create database `col-law-db` → copy the **Database ID** into `apps/api/wrangler.jsonc` under `env.production.d1_databases[0].database_id` (replace `REPLACE_WITH_YOUR_D1_DATABASE_ID`).
+2. **R2** → Create bucket `col-law-media`.
+3. **My Profile** → **API Tokens** → Create token with **Edit Cloudflare Workers** permission → copy the token.
+
+One-time setup in **GitHub** → repo **Settings** → **Secrets and variables** → **Actions**:
+
+| Secret | Value |
+|--------|--------|
+| `CLOUDFLARE_API_TOKEN` | API token from step 3 above |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare dashboard → Workers → right sidebar **Account ID** |
+| `JWT_SECRET` | Long random string (32+ chars) for production auth |
+
+Push to `master` (or run **Actions** → **Deploy API** → **Run workflow**). The workflow applies D1 migrations and deploys `col-law-api`.
+
+API URL after deploy: `https://col-law-api.<your-subdomain>.workers.dev`
+
+### 2b. Deploy API locally (optional)
 
 ```bash
 cd apps/api

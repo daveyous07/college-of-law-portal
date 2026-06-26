@@ -24,12 +24,12 @@ authRoutes.post("/login", async (c) => {
   const hash = await hashPassword(body.data.password);
   if (hash !== user.passwordHash) return c.json({ error: "Invalid credentials" }, 401);
   const token = await signToken({ id: user.id, email: user.email, name: user.name, role: user.role }, c.env.JWT_SECRET);
-  c.header("Set-Cookie", setAuthCookie(token));
+  c.header("Set-Cookie", setAuthCookie(token, c.env.CORS_ORIGIN));
   return c.json({ user: { id: user.id, name: user.name, email: user.email, role: user.role } });
 });
 
 authRoutes.post("/logout", (c) => {
-  c.header("Set-Cookie", clearAuthCookie());
+  c.header("Set-Cookie", clearAuthCookie(c.env.CORS_ORIGIN));
   return c.json({ ok: true });
 });
 
