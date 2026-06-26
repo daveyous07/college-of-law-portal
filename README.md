@@ -108,7 +108,7 @@ Connect the GitHub repo to **Workers Builds** (or Cloudflare Workers CI). Use th
 |---------|--------|
 | Root directory | *(repo root)* |
 | Build command | `npm run build` |
-| **Deploy command** | `npm run deploy` |
+| **Deploy command** | `npm run deploy` or `npx wrangler deploy` |
 
 The web app uses [@opennextjs/cloudflare](https://opennext.js.org/cloudflare) — `build` produces `.open-next/` and `deploy` runs `wrangler deploy` from `apps/web`. Do **not** run bare `npx wrangler deploy` from the monorepo root.
 
