@@ -6,8 +6,10 @@
     "dev": "npm run dev --workspace=apps/web & npm run dev --workspace=apps/api",
     "dev:web": "npm run dev --workspace=apps/web",
     "dev:api": "npm run dev --workspace=apps/api",
-    "build": "npm run build --workspace=col-law-web",
-    "build:web": "npm run build --workspace=col-law-web",
+    "build": "npm run build:cloudflare --workspace=col-law-web",
+    "build:web": "npm run build:cloudflare --workspace=col-law-web",
+    "deploy": "npm run deploy --workspace=col-law-web",
+    "deploy:web": "npm run deploy --workspace=col-law-web",
     "build:all": "npm run build --workspaces --if-present",
     "db:generate": "npm run generate --workspace=packages/db",
     "db:migrate": "npm run migrate --workspace=packages/db"

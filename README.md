@@ -100,24 +100,21 @@ npx wrangler secret put JWT_SECRET
 npm run deploy
 ```
 
-### 3. Deploy frontend
+### 3. Deploy frontend (Workers Builds)
 
-In **Cloudflare Pages** → your project → **Settings** → **Build**:
+Connect the GitHub repo to **Workers Builds** (or Cloudflare Workers CI). Use these settings:
 
 | Setting | Value |
 |---------|--------|
 | Root directory | *(repo root)* |
 | Build command | `npm run build` |
-| Framework preset | **Next.js** |
+| **Deploy command** | `npm run deploy` |
 
-Set environment variable `NEXT_PUBLIC_API_URL` to your Worker URL (e.g. `https://col-law-api.<account>.workers.dev`).
+The web app uses [@opennextjs/cloudflare](https://opennext.js.org/cloudflare) — `build` produces `.open-next/` and `deploy` runs `wrangler deploy` from `apps/web`. Do **not** run bare `npx wrangler deploy` from the monorepo root.
 
-The root `npm run build` only builds the **web** workspace. The API (`apps/api`) and shared DB package deploy separately — they do not need a Pages build step.
+Set environment variable `NEXT_PUBLIC_API_URL` to your Worker URL (e.g. `https://col-law-api.<account>.workers.dev`) in **Build variables and secrets**.
 
-```bash
-cd apps/web
-npm run build
-```
+The API (`apps/api`) deploys separately: `cd apps/api && npm run deploy`.
 
 ### 4. Configure CORS
 
